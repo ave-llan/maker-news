@@ -1,0 +1,28 @@
+{
+  "name": "maker-news",
+  "version": "1.0.0",
+  "description": "Hacker news style voting",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jrleszcz/maker-news.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jrleszcz/maker-news/issues"
+  },
+  "homepage": "https://github.com/jrleszcz/maker-news#readme",
+  "dependencies": {
+    "express": "^4.13.3",
+    "orchestrate": "^0.6.0",
+    "passport": "^0.3.2",
+    "passport-github": "^1.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^1.10.1"
+  }
+}
