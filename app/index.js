@@ -1,6 +1,6 @@
 var express        = require('express')
   , passport       = require('passport')
-  , GitHubStrategy = require('passport-github').GitHubStrategy
+  , GitHubStrategy = require('passport-github').Strategy
 
 var app = express()
 
@@ -14,9 +14,9 @@ passport.deserializeUser(function (obj, done) {
 
 passport.use(new GitHubStrategy(
   {
-    clientID: process.env.GITHUB_CLIENT_ID,
-    clientSecret: process.env.GITHUB_CLIENT_SECRET,
-    callbackURL: process.env.GITHUB_CALLBACK
+    clientID     : process.env.GITHUB_CLIENT_ID,
+    clientSecret : process.env.GITHUB_CLIENT_SECRET,
+    callbackURL  : process.env.GITHUB_CALLBACK
   },
   function (accessToken, refreshToken, profile, done) {
     // on succesesful auth
@@ -35,5 +35,13 @@ passport.use(new GitHubStrategy(
 app.get('/', function (req, res) {
   res.send('hello world')
 })
+
+app.get('/auth/github/callback',
+        passport.authenticate('github', { failureRedirect: '/' }),
+        function (req, res) {
+          // Successful authentication, redirect home
+          res.redirect('/')
+        }
+)
 
 app.listen(process.env.PORT || 5000)
