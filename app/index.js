@@ -1,3 +1,5 @@
+require('dotenv').load()      // load .env variable to process.env
+
 var express        = require('express')
   , passport       = require('passport')
   , GitHubStrategy = require('passport-github').Strategy
